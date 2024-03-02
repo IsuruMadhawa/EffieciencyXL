@@ -5,3 +5,14 @@ router = APIRouter(
     tags=["video"],
     responses={404: {"description": "The requested uri was not found"}},
 )
+import asyncio
+import websockets
+from fastapi import FastAPI, WebSocket
+
+@app.websocket("/video")
+async def video_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_bytes()
+        with open('video.mp4', 'ab') as f:
+            f.write(data)
