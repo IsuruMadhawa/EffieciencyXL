@@ -7,7 +7,6 @@ router = APIRouter(
 )
 import asyncio
 import websockets
-from fastapi import FastAPI, WebSocket
 
 @app.websocket("/video")
 async def video_endpoint(websocket: WebSocket):
