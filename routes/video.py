@@ -12,4 +12,4 @@ async def video_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
         data = await websocket.receive_bytes()
-        pass  # TODO
+        pass  # TODO implement the video endpoint
