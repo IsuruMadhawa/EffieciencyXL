@@ -5,8 +5,6 @@ router = APIRouter(
     tags=["video"],
     responses={404: {"description": "The requested uri was not found"}},
 )
-import asyncio
-import websockets
 
 @app.websocket("/video")
 async def video_endpoint(websocket: WebSocket):
