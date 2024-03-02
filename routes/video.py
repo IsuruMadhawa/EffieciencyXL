@@ -9,7 +9,7 @@ router = APIRouter(
 )
 
 
-@app.websocket("/video")
+@router.websocket("/video")
 async def video_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
