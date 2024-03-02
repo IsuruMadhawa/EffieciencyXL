@@ -1,6 +1,4 @@
 from fastapi import APIRouter, WebSocket
-import asyncio
-import websockets
 
 router = APIRouter(
     prefix="/api/video",
