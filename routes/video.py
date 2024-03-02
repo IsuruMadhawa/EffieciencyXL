@@ -16,3 +16,4 @@ async def video_endpoint(websocket: WebSocket):
         data = await websocket.receive_bytes()
         with open('video.mp4', 'ab') as f:
             f.write(data)
+            
