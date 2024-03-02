@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, WebSocket
 
 router = APIRouter(
     prefix="/api/video",
@@ -16,4 +16,3 @@ async def video_endpoint(websocket: WebSocket):
         data = await websocket.receive_bytes()
         with open('video.mp4', 'ab') as f:
             f.write(data)
-            
