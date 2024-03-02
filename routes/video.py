@@ -8,6 +8,7 @@ router = APIRouter(
     responses={404: {"description": "The requested uri was not found"}},
 )
 
+
 @app.websocket("/video")
 async def video_endpoint(websocket: WebSocket):
     await websocket.accept()
