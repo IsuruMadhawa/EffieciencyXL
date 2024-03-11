@@ -54,5 +54,6 @@ async def approve_clearance_report(
 
     # TODO implement this
     #  timestamp, officer id, details
+    #  notify the civilian
 
     pass
