@@ -148,3 +148,27 @@ class UserDAO:
             return err
 
     def insert_clearance_request(self, name, division, district, description):
+        """
+        Add a clearance request to the database
+        Args:
+            name: name of the civilian
+            division: police division
+            district: district
+            description: description of the request
+
+        Returns:
+            "Request for clearance is sent" if the request was inserted successfully
+            An error message if the request was not inserted successfully
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = ("INSERT INTO clearance_requests (name, division, district, description, timestamp) "
+                     "VALUES (%s, %s, %s, %s, CURRENT_TIMESTAMP)")
+            values = (name, division, district, description)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+            return "Request for clearance is sent"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
