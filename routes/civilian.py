@@ -41,7 +41,6 @@ async def lost_item_report(
         return {"message": "Only civilians can report lost items"}
 
     # Add the report to the database
-    clearance_request(name, division, district, description)
 
     return {"message": "Lost item report is sent"}
 
@@ -74,6 +73,7 @@ async def request_clearance(
     if user.role != "civilian":
         return {"message": "Only civilians can request clearance"}
 
-    # TODO Add the request to the database
+    # Add the request to the database
+    clearance_request(name, division, district, description)
 
     return {"message": "Request for clearance is sent"}
