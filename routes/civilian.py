@@ -27,11 +27,6 @@ async def request_clearance(
     Returns:
 
     """
-    if is_token_blacklisted(token):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token is blacklisted"
-        )
     user = await get_current_user(token)
 
     if user is None:
