@@ -12,6 +12,6 @@ async def request_clearance(
         name: str = Form(...),
         division: str = Form(...),
         district: str = Form(...),
-        form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
+        token: str = Depends(oauth2_scheme)
 ):
     return {"message": "Request for clearance is sent"}
