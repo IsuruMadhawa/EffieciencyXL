@@ -36,7 +36,11 @@ async def request_clearance(
     if user.role != "officer":
         return {"message": "Only officers can request clearance reports"}
 
-    pass  # TODO
+    # TODO implement this
+    #  timestamp, officer id, details
+    #  notify the civilian
+
+    pass 
 
 
 @router.post("/approve-clearance-report")
