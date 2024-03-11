@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 # Load the face descriptors and labels once when the server starts
-face_descriptors, face_labels = compute_face_descriptors("dataset")
+face_descriptors, face_labels = compute_face_descriptors("facerec/dataset")
 
 executor = ThreadPoolExecutor(max_workers=1)
 
