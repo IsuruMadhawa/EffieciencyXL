@@ -43,6 +43,8 @@ async def lost_item_report(
     # Add the report to the database
     add_lost_item_report(name, division, district, item, description)
 
+    # TODO: Send a notification to the divisional officer
+
     return {"message": "Lost item report is sent"}
 
 
