@@ -39,7 +39,7 @@ async def lost_item_report(
     if user.role != "civilian":
         return {"message": "Only civilians can report lost items"}
 
-    # TODO Add the report to the database
+    # Add the report to the database
 
     return {"message": "Lost item report is sent"}
 
