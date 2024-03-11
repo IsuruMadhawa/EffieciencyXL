@@ -157,3 +157,5 @@ ML/dlib_face_recognition_resnet_model_v1.dat
 ML/dlib_face_recognition_resnet_model_v1.dat.bz2
 ML/shape_predictor_5_face_landmarks.dat
 ML/shape_predictor_5_face_landmarks.dat.bz2
+facerec/dlib_face_recognition_resnet_model_v1.dat
+facerec/shape_predictor_5_face_landmarks.dat
