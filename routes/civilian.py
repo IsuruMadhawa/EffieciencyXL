@@ -32,5 +32,8 @@ async def request_clearance(
     if user is None:
         raise credentials_exception
 
+    if user.role != "civilian":
+        return {"message": "Only civilians can request clearance"}
+
 
     return {"message": "Request for clearance is sent"}
