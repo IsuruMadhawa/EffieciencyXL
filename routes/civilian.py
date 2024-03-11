@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from auth.authorize import get_current_user
+from auth.authorize import get_current_user, credentials_exception
 
 router = APIRouter(
     prefix="/api/civilian",
