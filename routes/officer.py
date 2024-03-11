@@ -39,4 +39,4 @@ async def request_clearance(
     pass  # TODO
 
 
-@router.post("/approve-lost-item-report")
+@router.post("/approve-clearance-report")
