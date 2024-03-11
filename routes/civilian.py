@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Form
 
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
+from services.civilian_service import clearance_request
 
 router = APIRouter(
     prefix="/api/civilian",
@@ -40,7 +41,7 @@ async def lost_item_report(
         return {"message": "Only civilians can report lost items"}
 
     # Add the report to the database
-    clearance_request(name, division, district, item, description)
+    clearance_request(name, division, district, description)
 
     return {"message": "Lost item report is sent"}
 
