@@ -40,3 +40,15 @@ async def request_clearance(
 
 
 @router.post("/approve-clearance-report")
+async def approve_clearance_report(
+        token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+    if user.role != "officer":
+        return {"message": "Only officers can approve clearance reports"}
+
+    pass
