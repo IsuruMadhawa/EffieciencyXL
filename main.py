@@ -14,3 +14,5 @@ app.add_middleware(
 )
 
 app.include_router(auth.router)
+app.include_router(video.router)
+app.include_router(civilian.router)
