@@ -172,3 +172,30 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    def insert_lost_item_report(self, name, division, district, item, description):
+        """
+        Add a lost item report to the database
+        Args:
+            name: name of the civilian
+            division: police division
+            district: district
+            item: the lost item
+            description: description of the lost item
+
+        Returns:
+            "Lost item report is sent" if the report was inserted successfully
+            An error message if the report was not inserted successfully
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = ("INSERT INTO lost_item_reports (name, division, district, item, description, state) "
+                     "VALUES (%s, %s, %s, %s, %s, 'pending')")
+            values = (name, division, district, item, description)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+            return "Lost item report is sent"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
