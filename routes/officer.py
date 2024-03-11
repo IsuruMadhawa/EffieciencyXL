@@ -24,4 +24,16 @@ async def lost_item_report(
     pass  # TODO
 
 
+@router.post("/get-clearance-requests")
+async def request_clearance(
+        token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
 
+    if user is None:
+        raise credentials_exception
+
+    if user.role != "officer":
+        return {"message": "Only officers can request clearance"}
+
+    pass
