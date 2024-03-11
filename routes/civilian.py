@@ -14,6 +14,7 @@ async def request_clearance(
         name: str = Form(...),
         division: str = Form(...),
         district: str = Form(...),
+        description: str = Form(...),
         token: str = Depends(oauth2_scheme)
 ):
     """
