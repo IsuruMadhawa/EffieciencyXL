@@ -8,4 +8,5 @@ router = APIRouter(
 
 
 @router.post("/request-clearance")
-async def 
+async def request_clearance():
+    return {"message": "Request for clearance is sent"}
