@@ -23,7 +23,7 @@ async def lost_item_report(
 
     # TODO implement this
 
-    pass 
+    pass
 
 
 @router.post("/get-clearance-requests")
