@@ -41,6 +41,7 @@ async def request_clearance(
 
 @router.post("/approve-clearance-report")
 async def approve_clearance_report(
+        id: int = Form(...),
         token: str = Depends(oauth2_scheme)
 ):
     user = await get_current_user(token)
