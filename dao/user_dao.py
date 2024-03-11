@@ -116,7 +116,8 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = "INSERT INTO feeddata (label, location, timestamp, misc) VALUES (%s, %s, CURRENT_TIMESTAMP, %s)"
+            query = ("INSERT INTO feeddata (label, location, timestamp, misc) "
+                     "VALUES (%s, %s, CURRENT_TIMESTAMP, %s)")
             values = (label, location, timestamp, misc)
             cursor.execute(query, values)
             self.cnx.commit()
