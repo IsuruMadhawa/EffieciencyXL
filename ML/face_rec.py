@@ -2,6 +2,7 @@ import os
 import dlib
 import numpy as np
 
+
 def compute_face_descriptors(training_dataset_path):
     detector = dlib.get_frontal_face_detector()
     sp = dlib.shape_predictor("shape_predictor_5_face_landmarks.dat")
