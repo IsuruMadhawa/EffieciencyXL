@@ -9,6 +9,9 @@ router = APIRouter(
 )
 
 
+
+
+
 @router.post("/request-clearance")
 async def request_clearance(
         name: str = Form(...),
