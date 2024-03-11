@@ -19,7 +19,7 @@ async def lost_item_report(
         raise credentials_exception
 
     if user.role != "officer":
-        return {"message": "Only officers can report lost items"}
+        return {"message": "Only officers can report lost item reports"}
 
     pass  # TODO
 
