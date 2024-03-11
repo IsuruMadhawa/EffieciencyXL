@@ -34,7 +34,7 @@ async def video_endpoint(websocket: WebSocket):
         label = recognize_face(face_descriptors, face_labels, img)
 
         # add to the database
-        add_video_data(label, location, "misc")
+        add_video_data(label, location, misc)
 
         # Send the result back to the client
         await websocket.send_text(f"The face is recognized as: {label}")
