@@ -37,5 +37,4 @@ async def request_clearance(
 
     # TODO Add the request to the database
 
-
     return {"message": "Request for clearance is sent"}
