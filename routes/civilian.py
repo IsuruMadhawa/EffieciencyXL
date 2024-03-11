@@ -1,7 +1,7 @@
-
+from fastapi import APIRouter
 
 router = APIRouter(
-    prefix="/api/video",
-    tags=["video"],
+    prefix="/api/civilian",
+    tags=["civilian"],
     responses={404: {"description": "The requested uri was not found"}},
 )
