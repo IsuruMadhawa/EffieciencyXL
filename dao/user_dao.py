@@ -189,8 +189,8 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = ("INSERT INTO lost_item_reports (name, division, district, item, description, state) "
-                     "VALUES (%s, %s, %s, %s, %s, 'pending')")
+            query = ("INSERT INTO lost_item_reports (name, division, district, item, description, state, timestamp) "
+                     "VALUES (%s, %s, %s, %s, %s, 'pending', CURRENT_TIMESTAMP)")
             values = (name, division, district, item, description)
             cursor.execute(query, values)
             self.cnx.commit()
