@@ -14,4 +14,15 @@ async def request_clearance(
         district: str = Form(...),
         token: str = Depends(oauth2_scheme)
 ):
+    """
+    The endpoint for requesting clearance reports
+    Args:
+        name: name of the civilian
+        division: police division
+        district: district
+        token: access token
+
+    Returns:
+
+    """
     return {"message": "Request for clearance is sent"}
