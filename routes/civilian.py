@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 
+from auth.authorize import get_current_user
+
 router = APIRouter(
     prefix="/api/civilian",
     tags=["civilian"],
@@ -30,5 +32,10 @@ async def request_clearance(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token is blacklisted"
         )
-    user = get_current_user(token)
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+
     return {"message": "Request for clearance is sent"}
