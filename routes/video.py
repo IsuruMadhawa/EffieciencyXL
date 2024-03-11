@@ -2,8 +2,6 @@ import cv2
 import numpy as np
 from fastapi import APIRouter, WebSocket
 
-from ML.face_rec import recognize_face, compute_face_descriptors
-
 router = APIRouter(
     prefix="/api/video",
     tags=["video"],
