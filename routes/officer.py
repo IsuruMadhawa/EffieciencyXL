@@ -36,4 +36,4 @@ async def request_clearance(
     if user.role != "officer":
         return {"message": "Only officers can request clearance"}
 
-    pass
+    pass  # TODO
