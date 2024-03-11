@@ -37,10 +37,8 @@ async def request_clearance(
         return {"message": "Only officers can request clearance reports"}
 
     # TODO implement this
-    #  timestamp, officer id, details
-    #  notify the civilian
 
-    pass 
+    pass
 
 
 @router.post("/approve-clearance-report")
