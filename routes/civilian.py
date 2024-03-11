@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, Form
 
-from auth.authorize import get_current_user, credentials_exception
+from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
 
 router = APIRouter(
     prefix="/api/civilian",
