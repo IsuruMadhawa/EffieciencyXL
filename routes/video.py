@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 from fastapi import APIRouter, WebSocket
+from concurrent.futures import ThreadPoolExecutor
 
 from facerec.main import compute_face_descriptors, recognize_face
 from services.videostream_service import add_video_data
@@ -13,6 +14,8 @@ router = APIRouter(
 
 # Load the face descriptors and labels once when the server starts
 face_descriptors, face_labels = compute_face_descriptors("dataset")
+
+executor = ThreadPoolExecutor(max_workers=1)
 
 
 @router.websocket("/video")
@@ -34,7 +37,7 @@ async def video_endpoint(websocket: WebSocket):
         label = recognize_face(face_descriptors, face_labels, img)
 
         # add to the database
-        add_video_data(label, location, misc)
+        executor.submit(add_video_data, label, location, misc)
 
         # Send the result back to the client
         await websocket.send_text(f"The face is recognized as: {label}")
