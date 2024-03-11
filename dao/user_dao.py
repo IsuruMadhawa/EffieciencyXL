@@ -127,4 +127,5 @@ class UserDAO:
             print(err)
             return err
 
-    
+    def query_feeddata_for_name(self, name):
+        
