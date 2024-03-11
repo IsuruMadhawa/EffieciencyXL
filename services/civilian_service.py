@@ -17,7 +17,7 @@ def clearance_request(name, division, district, description):
     return dao.insert_clearance_request(name, division, district, description)
 
 
-def lost_item_report(name, division, district, item, description):
+def add_lost_item_report(name, division, district, item, description):
     """
     Add a lost item report to the database
     Args:
