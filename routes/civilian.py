@@ -23,6 +23,7 @@ async def request_clearance(
         name: name of the civilian
         division: police division
         district: district
+        description: description of the request
         token: access token
 
     Returns:
