@@ -11,11 +11,6 @@ router = APIRouter(
 
 @router.post("/get-lost-item-reports")
 async def lost_item_report(
-        name: str = Form(...),
-        division: str = Form(...),
-        district: str = Form(...),
-        item: str = Form(...),
-        description: str = Form(...),
         token: str = Depends(oauth2_scheme)
 ):
     user = await get_current_user(token)
