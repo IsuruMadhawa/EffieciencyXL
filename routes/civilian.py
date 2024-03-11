@@ -8,3 +8,4 @@ router = APIRouter(
 
 
 @router.post("/request-clearance")
+async def 
