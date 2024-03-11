@@ -9,7 +9,7 @@ router = APIRouter(
 )
 
 
-
+@router.post("/lost-item-report")
 
 
 @router.post("/request-clearance")
