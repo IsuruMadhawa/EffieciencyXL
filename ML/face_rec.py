@@ -49,8 +49,3 @@ def recognize_face(face_descriptors, face_labels, unknown_face_path, threshold=0
 
     else:
         raise ValueError("No face detected in the image.")
-
-
-face_descriptors, face_labels = compute_face_descriptors("dataset")
-label = recognize_face(face_descriptors, face_labels, "test.jpg")
-print("The face is recognized as:", label)
