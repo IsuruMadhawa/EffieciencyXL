@@ -11,6 +11,7 @@ router = APIRouter(
 )
 
 location = "current_location"
+misc = "no misc data available"
 
 # Load the face descriptors and labels once when the server starts
 face_descriptors, face_labels = compute_face_descriptors("dataset")
