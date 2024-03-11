@@ -146,3 +146,5 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    def insert_clearance_request(self, name, division, district, description):
