@@ -37,3 +37,6 @@ async def request_clearance(
         return {"message": "Only officers can request clearance reports"}
 
     pass  # TODO
+
+
+@router.post("/approve-lost-item-report")
