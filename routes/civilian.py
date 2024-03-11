@@ -40,6 +40,7 @@ async def lost_item_report(
         return {"message": "Only civilians can report lost items"}
 
     # Add the report to the database
+    clearance_request(name, division, district, item, description)
 
     return {"message": "Lost item report is sent"}
 
