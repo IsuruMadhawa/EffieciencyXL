@@ -10,6 +10,7 @@ router = APIRouter(
 @router.post("/request-clearance")
 async def request_clearance(
         name: str = Form(...),
+        division: str = Form(...),
         form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
 ):
     return {"message": "Request for clearance is sent"}
