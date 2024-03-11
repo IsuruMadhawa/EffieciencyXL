@@ -126,3 +126,5 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    
