@@ -51,4 +51,4 @@ async def approve_clearance_report(
     if user.role != "officer":
         return {"message": "Only officers can approve clearance reports"}
 
-    pass
+    pass  # TODO
