@@ -9,7 +9,7 @@ router = APIRouter(
 )
 
 
-@router.post("/lost-item-report")
+@router.post("/get-lost-item-reports")
 async def lost_item_report(
         name: str = Form(...),
         division: str = Form(...),
