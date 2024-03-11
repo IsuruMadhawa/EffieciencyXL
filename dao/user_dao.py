@@ -103,7 +103,7 @@ class UserDAO:
 
     def add_video_data(self, label, location, timestamp, misc):
         """
-        Add video data to the database 
+        Add video data to the database
         Args:
             label:
             location:
@@ -113,3 +113,12 @@ class UserDAO:
         Returns:
 
         """
+        try:
+            cursor = self.cnx.cursor()
+            query = "INSERT INTO video_data (label, location, timestamp, misc) VALUES (%s, %s, %s, %s)"
+            values = (label, location, timestamp, misc)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+        except mysql.connector.Error as err:
+            print(err)
