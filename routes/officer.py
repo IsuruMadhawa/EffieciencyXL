@@ -23,6 +23,6 @@ async def lost_item_report(
     if user is None:
         raise credentials_exception
 
-    if user.role != "civilian":
+    if user.role != "officer":
         return {"message": "Only civilians can report lost items"}
 
