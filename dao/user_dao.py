@@ -128,4 +128,21 @@ class UserDAO:
             return err
 
     def query_feeddata_for_name(self, name):
-        
+        """
+        Query the feeddata table for a specific name
+        Args:
+            name: the name to query for
+
+        Returns:
+            A list of tuples containing the data for the name
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM feeddata WHERE label = %s"
+            cursor.execute(query, (name,))
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
