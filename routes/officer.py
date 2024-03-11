@@ -34,6 +34,6 @@ async def request_clearance(
         raise credentials_exception
 
     if user.role != "officer":
-        return {"message": "Only officers can request clearance"}
+        return {"message": "Only officers can request clearance reports"}
 
     pass  # TODO
