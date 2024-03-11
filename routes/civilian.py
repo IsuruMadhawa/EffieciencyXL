@@ -30,4 +30,5 @@ async def request_clearance(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token is blacklisted"
         )
+    user = get_current_user(token)
     return {"message": "Request for clearance is sent"}
