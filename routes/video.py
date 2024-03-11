@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 from fastapi import APIRouter, WebSocket
 
+from facerec.main import compute_face_descriptors, recognize_face
+
 router = APIRouter(
     prefix="/api/video",
     tags=["video"],
