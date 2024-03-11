@@ -111,7 +111,8 @@ class UserDAO:
             misc:
 
         Returns:
-
+            "Inserted successfully" if the data was inserted successfully
+            An error message if the data was not inserted successfully
         """
         try:
             cursor = self.cnx.cursor()
