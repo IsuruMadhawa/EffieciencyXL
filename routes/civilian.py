@@ -24,6 +24,7 @@ async def lost_item_report(
         name: name of the civilian
         division: police division
         district: district
+        item: the lost item
         description: description of the lost item
         token: access token
 
