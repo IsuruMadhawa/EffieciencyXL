@@ -100,3 +100,16 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return False
+
+    def add_video_data(self, label, location, timestamp, misc):
+        """
+        Add video data to the database 
+        Args:
+            label:
+            location:
+            timestamp:
+            misc:
+
+        Returns:
+
+        """
