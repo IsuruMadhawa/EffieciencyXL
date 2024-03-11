@@ -101,7 +101,7 @@ class UserDAO:
             print(err)
             return False
 
-    def add_video_data(self, label, location, timestamp, misc):
+    def insert_video_data(self, label, location, timestamp, misc):
         """
         Add video data to the database
         Args:
