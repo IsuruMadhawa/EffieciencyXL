@@ -41,7 +41,7 @@ async def lost_item_report(
         return {"message": "Only civilians can report lost items"}
 
     # Add the report to the database
-    lost_item_report(name, division, district, item, description)
+    await lost_item_report(name, division, district, item, description)
 
     return {"message": "Lost item report is sent"}
 
