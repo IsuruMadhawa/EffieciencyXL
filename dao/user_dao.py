@@ -120,6 +120,7 @@ class UserDAO:
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()
+            return "Inserted successfully"
         except mysql.connector.Error as err:
             print(err)
             return err
