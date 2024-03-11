@@ -35,5 +35,7 @@ async def request_clearance(
     if user.role != "civilian":
         return {"message": "Only civilians can request clearance"}
 
+    # TODO Add the request to the database
+
 
     return {"message": "Request for clearance is sent"}
