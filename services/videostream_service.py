@@ -5,4 +5,5 @@ def add_video_data(label, location, misc):
     return dao.insert_video_data(label, location, misc)
 
 
-
+def get_feeddata_for_name(name: str):
+    return dao.get_feeddata_for_name(name)
