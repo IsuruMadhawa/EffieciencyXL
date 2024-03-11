@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from routes import auth
+from routes import auth, video, civilian
 
 app = FastAPI()
 
