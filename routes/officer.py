@@ -2,7 +2,8 @@ from fastapi import APIRouter, Depends, Form
 
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
 from mailer import send_mail
-from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports, get_single_clearance_request
+from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports, \
+    get_single_clearance_request, update_clearance_report
 
 router = APIRouter(
     prefix="/api/officer",
@@ -56,6 +57,7 @@ async def approve_clearance_report(
         return {"message": "Only officers can approve clearance reports"}
 
     report = get_single_clearance_request(r_id)
+    o_id = user.id
 
     update_clearance_report(r_id, o_id, details)
 
