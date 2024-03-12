@@ -234,3 +234,22 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    def query_single_clearance_request(self, id):
+        """
+        Query the clearance_requests table for a specific request
+        Args:
+            id: the id of the request
+        Returns:
+        A list of tuples containing the data for the request
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM clearance_requests WHERE id = %s"
+            cursor.execute(query, (id,))
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
