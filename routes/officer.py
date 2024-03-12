@@ -22,7 +22,7 @@ async def lost_item_report(
     if user.role != "officer":
         return {"message": "Only officers can report lost item reports"}
 
-    
+    return get_all_clearance_requests()
 
 
 @router.post("/get-clearance-requests")
