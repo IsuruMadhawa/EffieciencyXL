@@ -15,3 +15,6 @@ def get_single_clearance_request(r_id):
 
 def update_clearance_report(r_id, o_id, details):
     return dao.update_clearance_report(r_id, o_id, details)
+
+
+
