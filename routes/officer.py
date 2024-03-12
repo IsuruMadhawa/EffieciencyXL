@@ -5,8 +5,8 @@ from mailer import send_mail
 from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports
 
 router = APIRouter(
-    prefix="/api/civilian",
-    tags=["civilian"],
+    prefix="/api/officer",
+    tags=["officer"],
     responses={404: {"description": "The requested uri was not found"}},
 )
 
