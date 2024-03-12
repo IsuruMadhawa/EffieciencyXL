@@ -101,7 +101,7 @@ class UserDAO:
             print(err)
             return False
 
-    def insert_video_data(self, label, location, timestamp, misc):
+    def insert_video_data(self, label, location, timestamp, misc, img):
         """
         Add video data to the database
         Args:
@@ -109,6 +109,7 @@ class UserDAO:
             location:
             timestamp:
             misc:
+            img: image bytes
 
         Returns:
             "Inserted successfully" if the data was inserted successfully
@@ -116,9 +117,9 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = ("INSERT INTO feeddata (label, location, timestamp, misc) "
-                     "VALUES (%s, %s, CURRENT_TIMESTAMP, %s)")
-            values = (label, location, timestamp, misc)
+            query = ("INSERT INTO feeddata (label, location, timestamp, misc, img) "
+                     "VALUES (%s, %s, CURRENT_TIMESTAMP, %s, %s)")
+            values = (label, location, timestamp, misc, img)
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()
@@ -196,6 +197,40 @@ class UserDAO:
             self.cnx.commit()
             cursor.close()
             return "Lost item report is sent"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
+    def query_all_clearance_requests(self):
+        """
+        Query the clearance_requests table for all requests
+        Returns:
+        A list of tuples containing the data for the requests
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM clearance_requests"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
+    def query_all_lost_item_reports(self):
+        """
+        Query the lost_item_reports table for all reports
+        Returns:
+        A list of tuples containing the data for the reports
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM lost_item_reports"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            return result
         except mysql.connector.Error as err:
             print(err)
             return err
