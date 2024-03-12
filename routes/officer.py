@@ -59,7 +59,7 @@ async def approve_clearance_report(
 
     #  notify the civilian
     send_mail(
-        "Clearance Report Approved",
+        user_email,
         "Your clearance report has been approved"
     )
 
