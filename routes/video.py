@@ -36,8 +36,12 @@ async def video_endpoint(websocket: WebSocket):
         # Run the face recognition on the image
         label = recognize_face(face_descriptors, face_labels, img)
 
+        # Convert the image to binary format
+        is_success, im_buf_arr = cv2.imencode(".jpg", img)
+        byte_im = im_buf_arr.tobytes()
+
         # add to the database
-        executor.submit(add_video_data, label, location, misc)
+        executor.submit(add_video_data, label, location, misc, byte_im)
         # TODO store the image in the database
 
         # Send the result back to the client
