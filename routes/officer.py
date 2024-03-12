@@ -43,7 +43,7 @@ async def request_clearance(
 
 @router.post("/approve-clearance-report")
 async def approve_clearance_report(
-        id: int = Form(...),
+        r_id: int = Form(...),
         token: str = Depends(oauth2_scheme)
 ):
     user = await get_current_user(token)
@@ -54,7 +54,7 @@ async def approve_clearance_report(
     if user.role != "officer":
         return {"message": "Only officers can approve clearance reports"}
 
-    report = get_single_clearance_request(id)
+    report = get_single_clearance_request(r_id)
 
     #  TODO timestamp, officer id, details
 
