@@ -298,7 +298,7 @@ class UserDAO:
             print(err)
             return err
 
-    def get_officer_for_division(self, division):
+    def query_officer_for_division(self, division):
         """
         Query the officer_id from the users table
         Args:
