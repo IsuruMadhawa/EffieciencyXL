@@ -59,7 +59,7 @@ async def approve_clearance_report(
     report = get_single_clearance_request(r_id)
     o_id = get_officer_id(user.id)
 
-    update_clearance_report(r_id, o_id, details)
+    result = update_clearance_report(r_id, o_id, details)
 
     # notify the civilian
     user_email = report.c_email
@@ -68,4 +68,4 @@ async def approve_clearance_report(
         "Your clearance report has been approved"
     )
 
-    return 
+    return
