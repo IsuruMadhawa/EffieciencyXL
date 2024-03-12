@@ -235,18 +235,18 @@ class UserDAO:
             print(err)
             return err
 
-    def query_single_clearance_request(self, id):
+    def query_single_clearance_request(self, r_id):
         """
         Query the clearance_requests table for a specific request
         Args:
-            id: the id of the request
+            r_id: the id of the request
         Returns:
         A list of tuples containing the data for the request
         """
         try:
             cursor = self.cnx.cursor()
             query = "SELECT * FROM clearance_requests WHERE id = %s"
-            cursor.execute(query, (id,))
+            cursor.execute(query, (r_id,))
             result = cursor.fetchall()
             cursor.close()
             return result
