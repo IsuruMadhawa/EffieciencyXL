@@ -12,11 +12,10 @@ context = ssl.create_default_context()
 
 
 def send_mail():
-
-with smtplib.SMTP(SMTP_SERVER, PORT) as server:
-    server.starttls(context=context)
-    server.login(EMAIL, PASSWORD)
-    message = """\
-    Your clearance request has been approved. Please visit the nearest police station to collect your clearance report.
-    """
-    server.sendmail(EMAIL, "sogiho2398@weirby.com", message)
+    with smtplib.SMTP(SMTP_SERVER, PORT) as server:
+        server.starttls(context=context)
+        server.login(EMAIL, PASSWORD)
+        message = """\
+        Your clearance request has been approved. Please visit the nearest police station to collect your clearance report.
+        """
+        server.sendmail(EMAIL, "sogiho2398@weirby.com", message)
