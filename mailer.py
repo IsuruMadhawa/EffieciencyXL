@@ -6,10 +6,8 @@ from config import config
 
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
-EMAIL = os.environ.get("EMAIL")
-PASSWORD = os.environ.get("PASSWORD")
-
-host=config.get("database", "database.host"),
+EMAIL = config.get("mailer", "mailer.email")
+PASSWORD = config.get("mailer", "mailer.password")
 
 context = ssl.create_default_context()
 
