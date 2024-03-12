@@ -58,6 +58,9 @@ async def approve_clearance_report(
     #  timestamp, officer id, details
 
     #  notify the civilian
-    send_mail()
+    send_mail(
+        "Clearance Report Approved",
+        "Your clearance report has been approved",
+    )
 
     pass
