@@ -68,4 +68,4 @@ async def approve_clearance_report(
         "Your clearance report has been approved"
     )
 
-    return
+    return result
