@@ -11,7 +11,7 @@ PASSWORD = config.get("mailer", "mailer.password")
 context = ssl.create_default_context()
 
 
-
+def send_mail():
 
 with smtplib.SMTP(SMTP_SERVER, PORT) as server:
     server.starttls(context=context)
