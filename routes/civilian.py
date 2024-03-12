@@ -45,7 +45,12 @@ async def lost_item_report(
     # Add the report to the database
     add_lost_item_report(name, division, district, item, description)
 
-    # TODO: Send a notification to the divisional officer
+    # Send a notification to the divisional officer
+    divisional_officer = get_officer_for_division(division)
+    mailer.send_mail(
+        divisional_officer.email,
+        "A civilian has requested clearance"
+    )
 
     return {"message": "Lost item report is sent"}
 
