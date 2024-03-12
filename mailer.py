@@ -10,6 +10,9 @@ PASSWORD = config.get("mailer", "mailer.password")
 
 context = ssl.create_default_context()
 
+
+
+
 with smtplib.SMTP(SMTP_SERVER, PORT) as server:
     server.starttls(context=context)
     server.login(EMAIL, PASSWORD)
