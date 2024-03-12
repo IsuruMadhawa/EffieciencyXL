@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Form
 
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
+from mailer import send_mail
 from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports
 
 router = APIRouter(
@@ -57,6 +58,6 @@ async def approve_clearance_report(
     #  timestamp, officer id, details
 
     #  notify the civilian
-    send_mail
+    send_mail()
 
     pass
