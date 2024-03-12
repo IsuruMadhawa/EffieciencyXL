@@ -289,7 +289,7 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = "SELECT officer_id FROM users WHERE id = %s"
+            query = "SELECT officer_id FROM officer WHERE user_id = %s"
             cursor.execute(query, (u_id,))
             result = cursor.fetchone()
             cursor.close()
