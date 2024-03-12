@@ -54,8 +54,7 @@ async def approve_clearance_report(
     if user.role != "officer":
         return {"message": "Only officers can approve clearance reports"}
 
-    # TODO implement this
-    #  timestamp, officer id, details
+    #  TODO timestamp, officer id, details
 
     #  notify the civilian
     user_email = ""  # TODO: get the email of the civilian
@@ -64,4 +63,5 @@ async def approve_clearance_report(
         "Your clearance report has been approved"
     )
 
+    # TODO implement this
     pass
