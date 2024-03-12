@@ -15,4 +15,4 @@ def send_mail(recipient: str, message: str):
     with smtplib.SMTP(SMTP_SERVER, PORT) as server:
         server.starttls(context=context)
         server.login(EMAIL, PASSWORD)
-        server.sendmail(EMAIL, "sogiho2398@weirby.com", message)
+        server.sendmail(EMAIL, recipient, message)
