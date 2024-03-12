@@ -49,7 +49,7 @@ async def lost_item_report(
     divisional_officer = get_officer_for_division(division)
     mailer.send_mail(
         divisional_officer.email,
-        "A civilian has reported a lost item
+        "A civilian has reported a lost item"
     )
 
     return {"message": "Lost item report is sent"}
