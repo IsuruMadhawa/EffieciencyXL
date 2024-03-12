@@ -11,3 +11,6 @@ def get_all_lost_item_reports():
 
 def get_single_clearance_request(r_id):
     return dao.query_single_clearance_request(r_id)
+
+
+
