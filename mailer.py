@@ -14,8 +14,6 @@ with smtplib.SMTP(SMTP_SERVER, PORT) as server:
     server.starttls(context=context)
     server.login(EMAIL, PASSWORD)
     message = """\
-    Subject: My First Email
-
-    Hello there, this is my first email sent using Python.
+    Your clearance request has been approved. Please visit the nearest police station to collect your clearance report.
     """
     server.sendmail(EMAIL, "sogiho2398@weirby.com", message)
