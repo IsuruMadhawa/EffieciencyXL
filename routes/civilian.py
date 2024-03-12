@@ -82,6 +82,6 @@ async def request_clearance(
 
     # TODO: Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
-
+    
 
     return {"message": "Request for clearance is sent"}
