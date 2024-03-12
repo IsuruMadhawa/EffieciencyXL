@@ -57,6 +57,7 @@ async def approve_clearance_report(
     report = get_single_clearance_request(r_id)
 
     #  TODO timestamp, officer id, details
+    
 
     # notify the civilian
     user_email = report.c_email
