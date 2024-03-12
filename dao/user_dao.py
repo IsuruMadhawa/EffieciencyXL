@@ -268,7 +268,7 @@ class UserDAO:
         try:
             cursor = self.cnx.cursor()
             query = ("UPDATE clearance_requests "
-                     "SET officer_id = %s, details = %s, state = 'approved' "
+                     "SET officer_id = %s, details = %s, state = 'approved', timestamp = CURRENT_TIMESTAMP"
                      "WHERE id = %s")
             values = (o_id, details, r_id)
             cursor.execute(query, values)
