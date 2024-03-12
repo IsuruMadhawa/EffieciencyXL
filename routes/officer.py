@@ -58,7 +58,7 @@ async def approve_clearance_report(
     #  timestamp, officer id, details
 
     #  notify the civilian
-    user_email = ""  # TODO
+    user_email = ""  # TODO: get the email of the civilian
     send_mail(
         user_email,
         "Your clearance report has been approved"
