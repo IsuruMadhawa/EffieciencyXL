@@ -81,7 +81,7 @@ async def request_clearance(
     # Add the request to the database
     clearance_request(name, division, district, description)
 
-    # TODO: Send a notification to the divisional officer
+    # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
     mailer.send_mail(
         divisional_officer.email,
