@@ -297,3 +297,22 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    def get_officer_for_division(self, division):
+        """
+        Query the officer_id from the users table
+        Args:
+            division: the division
+        Returns:
+        The officer_id
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT officer_id FROM officer WHERE division = %s"
+            cursor.execute(query, (division,))
+            result = cursor.fetchone()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
