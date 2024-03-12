@@ -280,3 +280,20 @@ class UserDAO:
             return err
 
     def query_officer_id(self, u_id):
+        """
+        Query the officer_id from the users table
+        Args:
+            u_id: the id of the user
+        Returns:
+        The officer_id
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT officer_id FROM users WHERE id = %s"
+            cursor.execute(query, (u_id,))
+            result = cursor.fetchone()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
