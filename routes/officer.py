@@ -68,5 +68,4 @@ async def approve_clearance_report(
         "Your clearance report has been approved"
     )
 
-    # TODO implement this
-    pass
+    return 
