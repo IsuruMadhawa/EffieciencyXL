@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Form
 
+import mailer
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
 from services.civilian_service import clearance_request, add_lost_item_report
 from services.officer_service import get_officer_for_division
@@ -82,6 +83,6 @@ async def request_clearance(
 
     # TODO: Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
-    
+    mailer.send_mail()
 
     return {"message": "Request for clearance is sent"}
