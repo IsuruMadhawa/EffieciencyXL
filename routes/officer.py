@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Form
 
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
-from services.officer_service import get_all_clearance_requests
+from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports
 
 router = APIRouter(
     prefix="/api/civilian",
