@@ -158,7 +158,7 @@ async def approve_clearance_report(
 
     report = get_single_clearance_request(r_id)
     print(report[0][7])
-    o_id = get_officer_id(user.id)
+    o_id = get_officer_id(user.id)[0]
 
     result = update_clearance_report(r_id, o_id, details, "approved")
 
