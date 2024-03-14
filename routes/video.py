@@ -52,7 +52,6 @@ async def video_endpoint(websocket: WebSocket):
         # add to the database
         if label:
             add_video_data(label, location, misc, byte_im)
-            # TODO store the image in the database
 
         # Send the result back to the client
         await websocket.send_text(f"The face is recognized as: {label}")
