@@ -12,6 +12,47 @@ router = APIRouter(
 )
 
 
+@router.post("/complaint")
+async def complaint(
+        name: str = Form(...),
+        division: str = Form(...),
+        district: str = Form(...),
+        complaint: str = Form(...),
+        token: str = Depends(oauth2_scheme)
+):
+    """
+    The endpoint for reporting complaints
+    Args:
+        name: name of the civilian
+        division: police division
+        district: district
+        complaint: the complaint
+        token: access token
+
+    Returns:
+
+    """
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+    if user.role != "civilian":
+        return {"message": "Only civilians can report complaints"}
+
+    # Add the complaint to the database
+    
+
+    # Send a notification to the divisional officer
+    divisional_officer = get_officer_for_division(division)
+    mailer.send_mail(
+        divisional_officer.email,
+        "A civilian has reported a complaint"
+    )
+
+    return {"message": "Complaint is sent"}
+
+
 @router.post("/lost-item-report")
 async def lost_item_report(
         name: str = Form(...),
