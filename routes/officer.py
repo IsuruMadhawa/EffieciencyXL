@@ -24,7 +24,7 @@ async def get_all_complaints(
     if user.role != "officer":
         return {"message": "Only officers can get all complaints"}
 
-    return get_all_complaints()
+    return all_complaints()
 
 
 @router.post("/get-lost-item-reports")
