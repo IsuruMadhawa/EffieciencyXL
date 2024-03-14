@@ -148,7 +148,7 @@ class UserDAO:
             print(err)
             return err
 
-    def insert_clearance_request(self, name, division, district, description):
+    def insert_clearance_request(self, name, division, district, description, email):
         """
         Add a clearance request to the database
         Args:
@@ -163,9 +163,9 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = ("INSERT INTO clearance_requests (name, division, district, description, state, timestamp) "
-                     "VALUES (%s, %s, %s, %s, 'pending', CURRENT_TIMESTAMP)")
-            values = (name, division, district, description)
+            query = ("INSERT INTO clearance_requests (name, division, district, description, state, timestamp, c_email) "
+                     "VALUES (%s, %s, %s, %s, 'pending', CURRENT_TIMESTAMP, %s)")
+            values = (name, division, district, description, email)
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()
@@ -294,9 +294,10 @@ class UserDAO:
         try:
             cursor = self.cnx.cursor()
             query = ("UPDATE clearance_requests "
-                     "SET officer_id = %s, details = %s, state = 'approved', timestamp = CURRENT_TIMESTAMP"
+                     "SET officer_id = %s, details = %s, state = 'approved', approved_timestamp = CURRENT_TIMESTAMP "
                      "WHERE id = %s")
             values = (o_id, details, r_id)
+            print(query, " ", values)  # TODO remove this
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()
