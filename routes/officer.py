@@ -13,6 +13,7 @@ router = APIRouter(
 
 
 @router.post("/get-all-complaints")
+async def get_all_complaints(
 
 
 @router.post("/get-lost-item-reports")
