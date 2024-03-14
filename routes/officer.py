@@ -12,6 +12,9 @@ router = APIRouter(
 )
 
 
+@router.post("/get-all-complaints")
+
+
 @router.post("/get-lost-item-reports")
 async def lost_item_report(
         token: str = Depends(oauth2_scheme)
