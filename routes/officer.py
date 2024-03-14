@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Form
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
 from mailer import send_mail
 from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports, \
-    get_single_clearance_request, update_clearance_report, get_officer_id, all_complaints
+    get_single_clearance_request, update_clearance_report, get_officer_id, all_complaints, get_all_criminals
 
 router = APIRouter(
     prefix="/api/officer",
