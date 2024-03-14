@@ -17,7 +17,7 @@ def add_complaint(name, division, district, complaint_txt):
     return dao.insert_complaint(name, division, district, complaint_txt)
 
 
-def clearance_request(name, division, district, description):
+def clearance_request(name, division, district, description, email):
     """
     Add a clearance request to the database
     Args:
@@ -25,12 +25,13 @@ def clearance_request(name, division, district, description):
         division: police division
         district: district
         description: description of the request
+        email: email of the civilian
 
     Returns:
         "Request for clearance is sent" if the request was inserted successfully
         An error message if the request was not inserted successfully
     """
-    return dao.insert_clearance_request(name, division, district, description)
+    return dao.insert_clearance_request(name, division, district, description, email)
 
 
 def add_lost_item_report(name, division, district, item, description):
