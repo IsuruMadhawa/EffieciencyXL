@@ -27,6 +27,26 @@ async def all_criminals(
     return get_all_criminals()
 
 
+@router.post("/add-criminal")
+async def add_criminal(
+    name: str = Form(...),
+    age: int = Form(...),
+    division: str = Form(...),
+    district: str = Form(...),
+    description: str = Form(...),
+    token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+    if user.role != "officer":
+        return {"message": "Only officers can add criminals"}
+
+    return add_new_criminal(name, age, description, division, district)
+
+
 @router.post("/get-all-complaints")
 async def get_all_complaints(
         token: str = Depends(oauth2_scheme)
