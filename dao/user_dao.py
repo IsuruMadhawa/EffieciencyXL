@@ -305,6 +305,8 @@ class UserDAO:
             print(err)
             return err
 
+    
+
     def update_approve_clearance_report(self, r_id, o_id, details):
         """
         Update the clearance report in the database
