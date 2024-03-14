@@ -13,8 +13,11 @@ def get_single_clearance_request(r_id):
     return dao.query_single_clearance_request(r_id)
 
 
-def update_clearance_report(r_id, o_id, details):
-    return dao.update_clearance_report(r_id, o_id, details)
+def update_clearance_report(r_id, o_id, details, status):
+    if status == "approved":
+        return dao.update_approve_clearance_report(r_id, o_id, details)
+    else:
+        return dao.update_disapprove_clearance_report(r_id, o_id, details)
 
 
 def get_officer_id(u_id):
