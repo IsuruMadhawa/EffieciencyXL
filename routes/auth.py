@@ -40,7 +40,6 @@ async def register_user(
         username: str = Form(...),
         email: str = Form(...),
         password: str = Form(...),
-        is_admin=False
 ):
     """
     The endpoint for registering a new user
@@ -57,6 +56,8 @@ async def register_user(
     Raises:
         HTTPException: if the username already exists
     """
+    role = "civilian"
+
     if user_exists(username):
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -68,7 +69,7 @@ async def register_user(
         username=username,
         email=email,
         hashed_password=hashed_password,
-        is_admin=is_admin,
+        role=role,
     )
     add_new_user(user)
     return user
