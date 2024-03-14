@@ -57,15 +57,17 @@ async def approve_clearance_report(
         return {"message": "Only officers can approve clearance reports"}
 
     report = get_single_clearance_request(r_id)
+    print(report[0][7])
     o_id = get_officer_id(user.id)
 
     result = update_clearance_report(r_id, o_id, details)
 
+    # TODO Uncomment this
     # notify the civilian
-    user_email = report.c_email
-    send_mail(
-        user_email,
-        "Your clearance report has been approved"
-    )
+    # user_email = report[0][7]
+    # send_mail(
+    #     user_email,
+    #     "Your clearance report has been approved"
+    # )
 
     return result
