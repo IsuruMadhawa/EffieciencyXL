@@ -24,7 +24,7 @@ executor = ThreadPoolExecutor(max_workers=1)
 async def video_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
-        location = "current_location"
+        location = "Colombo"
         misc = "no misc data available"
 
         data = await websocket.receive_text()
