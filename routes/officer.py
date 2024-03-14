@@ -13,6 +13,9 @@ router = APIRouter(
 )
 
 
+
+
+
 @router.post("/criminals")
 async def all_criminals(
     token: str = Depends(oauth2_scheme)
