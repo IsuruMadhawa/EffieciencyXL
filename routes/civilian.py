@@ -131,9 +131,10 @@ async def request_clearance(
 
     # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
-    mailer.send_mail(
-        divisional_officer.email,
-        "A civilian has requested clearance"
-    )
+    if divisional_officer:
+        mailer.send_mail(
+            divisional_officer.email,
+            "A civilian has requested clearance"
+        )
 
     return {"message": "Request for clearance is sent"}
