@@ -297,6 +297,7 @@ class UserDAO:
                      "SET officer_id = %s, details = %s, state = 'disapproved', approved_timestamp = CURRENT_TIMESTAMP "
                      "WHERE id = %s")
             values = (o_id, details, r_id)
+            print(values)
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()
