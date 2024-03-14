@@ -41,7 +41,7 @@ async def complaint(
         return {"message": "Only civilians can report complaints"}
 
     # Add the complaint to the database
-    
+
 
     # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
