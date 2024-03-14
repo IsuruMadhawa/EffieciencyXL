@@ -280,6 +280,23 @@ class UserDAO:
             print(err)
             return err
 
+    def query_all_criminals(self):
+        """
+        Query the criminals table for all criminals
+        Returns:
+        A list of tuples containing the data for the criminals
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM criminals"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
     def update_disapprove_clearance_report(self, r_id, o_id, details):
         """
         Update the clearance report in the database
