@@ -60,7 +60,7 @@ async def disapprove_clearance_report(
     print(report[0][7])
     o_id = get_officer_id(user.id)
 
-    result = update_clearance_report(r_id, o_id, details)
+    result = update_clearance_report(r_id, o_id, details, "disapproved")
 
     # TODO Uncomment this
     # notify the civilian
