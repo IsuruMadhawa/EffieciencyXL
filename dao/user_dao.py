@@ -305,7 +305,8 @@ class UserDAO:
             print(err)
             return err
 
-    
+    def query_all_complaints(self):
+        
 
     def update_approve_clearance_report(self, r_id, o_id, details):
         """
