@@ -14,6 +14,17 @@ router = APIRouter(
 
 @router.post("/get-all-complaints")
 async def get_all_complaints(
+        token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+    if user.role != "officer":
+        return {"message": "Only officers can get all complaints"}
+
+    return {"message": "All complaints"}
 
 
 @router.post("/get-lost-item-reports")
