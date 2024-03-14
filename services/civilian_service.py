@@ -1,6 +1,22 @@
 from services.database_service import dao
 
 
+def complaint(name, division, district, complaint):
+    """
+    Add a complaint to the database
+    Args:
+        name: name of the civilian
+        division: police division
+        district: district
+        complaint: the complaint
+
+    Returns:
+        "Complaint is sent" if the complaint was inserted successfully
+        An error message if the complaint was not inserted successfully
+    """
+    return dao.insert_complaint(name, division, district, complaint)
+
+
 def clearance_request(name, division, district, description):
     """
     Add a clearance request to the database
