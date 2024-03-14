@@ -290,7 +290,7 @@ class UserDAO:
         """
         try:
             cursor = self.cnx.cursor()
-            query = "SELECT * FROM feeddata WHERE label = %s"
+            query = "SELECT label, location, timestamp, misc FROM feeddata WHERE label = %s"
             cursor.execute(query, (name,))
             result = cursor.fetchall()
             cursor.close()
