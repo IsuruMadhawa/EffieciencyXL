@@ -280,6 +280,25 @@ class UserDAO:
             print(err)
             return err
 
+    def query_criminal_sightings(self, name):
+        """
+        Query the feeddata table for all sightings of a criminal
+        Args:
+            name: the name of the criminal
+        Returns:
+        A list of tuples containing the data for the sightings
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM feeddata WHERE label = %s"
+            cursor.execute(query, (name,))
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
     def insert_new_criminal(self, name, age, description, division, district):
         """
         Add a criminal to the database
