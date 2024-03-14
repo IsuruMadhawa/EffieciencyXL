@@ -218,6 +218,32 @@ class UserDAO:
             print(err)
             return err
 
+    def insert_complaint(self, name, division, district, complaint):
+        """
+        Add a complaint to the database
+        Args:
+            name: name of the civilian
+            division: police division
+            district: district
+            complaint: the complaint
+
+        Returns:
+            "Complaint is sent" if the complaint was inserted successfully
+            An error message if the complaint was not inserted successfully
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = ("INSERT INTO complaints (name, division, district, complaint, state, timestamp) "
+                     "VALUES (%s, %s, %s, %s, 'pending', CURRENT_TIMESTAMP)")
+            values = (name, division, district, complaint)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+            return "Complaint is sent"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
     def query_all_lost_item_reports(self):
         """
         Query the lost_item_reports table for all reports
