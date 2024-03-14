@@ -5,7 +5,7 @@ def get_all_clearance_requests():
     return dao.query_all_clearance_requests()
 
 
-def get_all_complaints():
+def all_complaints():
     return dao.query_all_complaints()
 
 
