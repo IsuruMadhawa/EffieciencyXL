@@ -28,6 +28,9 @@ def get_officer_id(u_id):
     return dao.query_officer_id(u_id)
 
 
+def add_new_criminal
+
+
 def get_officer_for_division(division):
     return dao.query_officer_for_division(division)
 
