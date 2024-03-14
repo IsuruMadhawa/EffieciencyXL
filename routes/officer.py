@@ -43,7 +43,7 @@ async def lost_item_report(
 
 
 @router.post("/get-clearance-requests")
-async def request_clearance(
+async def request_clearance_reports(
         token: str = Depends(oauth2_scheme)
 ):
     user = await get_current_user(token)
