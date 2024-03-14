@@ -127,7 +127,7 @@ async def request_clearance(
         return {"message": "Only civilians can request clearance"}
 
     # Add the request to the database
-    clearance_request(name, division, district, description)
+    clearance_request(name, division, district, description, user.email)
 
     # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
