@@ -280,6 +280,33 @@ class UserDAO:
             print(err)
             return err
 
+    def insert_new_criminal(self, name, age, description, division, district):
+        """
+        Add a criminal to the database
+        Args:
+            name: name of the criminal
+            age: age of the criminal
+            description: description of the criminal
+            division: police division
+            district: district
+
+        Returns:
+        "Criminal is added" if the criminal was inserted successfully
+        An error message if the criminal was not inserted successfully
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = ("INSERT INTO criminals (name, age, description, division, district) "
+                     "VALUES (%s, %s, %s, %s, %s)")
+            values = (name, age, description, division, district)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+            return "Criminal is added"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
     def query_all_criminals(self):
         """
         Query the criminals table for all criminals
