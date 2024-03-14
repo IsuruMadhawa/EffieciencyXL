@@ -101,7 +101,7 @@ class UserDAO:
             print(err)
             return False
 
-    def insert_video_data(self, label, location, timestamp, misc, img):
+    def insert_video_data(self, label, location, misc, img):
         """
         Add video data to the database
         Args:
@@ -119,7 +119,7 @@ class UserDAO:
             cursor = self.cnx.cursor()
             query = ("INSERT INTO feeddata (label, location, timestamp, misc, img) "
                      "VALUES (%s, %s, CURRENT_TIMESTAMP, %s, %s)")
-            values = (label, location, timestamp, misc, img)
+            values = (label, location, misc, img)
             cursor.execute(query, values)
             self.cnx.commit()
             cursor.close()

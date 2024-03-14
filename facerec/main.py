@@ -5,8 +5,8 @@ import numpy as np
 
 def compute_face_descriptors(training_dataset_path):
     detector = dlib.get_frontal_face_detector()
-    sp = dlib.shape_predictor("shape_predictor_5_face_landmarks.dat")
-    facerec = dlib.face_recognition_model_v1("dlib_face_recognition_resnet_model_v1.dat")
+    sp = dlib.shape_predictor("facerec/shape_predictor_5_face_landmarks.dat")
+    facerec = dlib.face_recognition_model_v1("facerec/dlib_face_recognition_resnet_model_v1.dat")
 
     face_descriptors = []
     face_labels = []
@@ -26,13 +26,13 @@ def compute_face_descriptors(training_dataset_path):
     return face_descriptors, face_labels
 
 
-def recognize_face(face_descriptors, face_labels, unknown_face_path, threshold=0.6):
+def recognize_face(face_descriptors, face_labels, img, threshold=0.6):
     detector = dlib.get_frontal_face_detector()
-    sp = dlib.shape_predictor("shape_predictor_5_face_landmarks.dat")
-    facerec = dlib.face_recognition_model_v1("dlib_face_recognition_resnet_model_v1.dat")
+    sp = dlib.shape_predictor("facerec/shape_predictor_5_face_landmarks.dat")
+    facerec = dlib.face_recognition_model_v1("facerec/dlib_face_recognition_resnet_model_v1.dat")
 
-    img = dlib.load_rgb_image(unknown_face_path)
     detections = detector(img, 1)
+    print("faces detected ", len(detections))
     if len(detections) > 0:
         shape = sp(img, detections[0])
         face_descriptor = facerec.compute_face_descriptor(img, shape)
@@ -42,10 +42,12 @@ def recognize_face(face_descriptors, face_labels, unknown_face_path, threshold=0
         min_distance = distances[closest_index]
 
         if min_distance > threshold:
+            print("Not identified")
             return "Not identified"
         else:
             label = face_labels[closest_index]
-            return label
-
-    else:
-        raise ValueError("No face detected in the image.")
+            print("identified as:", label)
+            return label.split(" ")[0]
+    # DEBUG
+    # else:
+    #     raise ValueError("No face detected in the image.")

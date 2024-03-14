@@ -1,3 +1,5 @@
+import base64
+
 import cv2
 import numpy as np
 from fastapi import APIRouter, WebSocket
@@ -22,13 +24,20 @@ executor = ThreadPoolExecutor(max_workers=1)
 async def video_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
-        data = await websocket.receive_bytes()
-
         location = "current_location"
         misc = "no misc data available"
 
-        # Convert the bytes to a numpy array
-        nparr = np.frombuffer(data, np.uint8)
+        data = await websocket.receive_text()
+        # print("data incoming...")
+
+        # Remove the header of the base64 string (if any)
+        base64_data = data.split(",")[-1]
+
+        # Convert the base64 string to bytes
+        img_bytes = base64.b64decode(base64_data)
+
+        # Convert the base64 string to a numpy array
+        nparr = np.frombuffer(img_bytes, np.uint8)
 
         # Decode the numpy array as an image
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
@@ -41,8 +50,9 @@ async def video_endpoint(websocket: WebSocket):
         byte_im = im_buf_arr.tobytes()
 
         # add to the database
-        executor.submit(add_video_data, label, location, misc, byte_im)
-        # TODO store the image in the database
+        if label:
+            add_video_data(label, location, misc, byte_im)
+            # TODO store the image in the database
 
         # Send the result back to the client
         await websocket.send_text(f"The face is recognized as: {label}")
