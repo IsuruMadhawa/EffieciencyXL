@@ -280,7 +280,32 @@ class UserDAO:
             print(err)
             return err
 
-    def update_clearance_report(self, r_id, o_id, details):
+    def update_disapprove_clearance_report(self, r_id, o_id, details):
+        """
+        Update the clearance report in the database
+        Args:
+            r_id: the id of the request
+            o_id: the id of the officer
+            details: details of the report
+        Returns:
+        "Updated successfully" if the report was updated successfully
+        An error message if the report was not updated successfully
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = ("UPDATE clearance_requests "
+                     "SET officer_id = %s, details = %s, state = 'disapproved', approved_timestamp = CURRENT_TIMESTAMP "
+                     "WHERE id = %s")
+            values = (o_id, details, r_id)
+            cursor.execute(query, values)
+            self.cnx.commit()
+            cursor.close()
+            return "Updated successfully"
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
+    def update_approve_clearance_report(self, r_id, o_id, details):
         """
         Update the clearance report in the database
         Args:
