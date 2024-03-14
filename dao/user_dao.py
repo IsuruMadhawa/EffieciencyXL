@@ -306,7 +306,21 @@ class UserDAO:
             return err
 
     def query_all_complaints(self):
-        
+        """
+        Query the complaints table for all complaints
+        Returns:
+        A list of tuples containing the data for the complaints
+        """
+        try:
+            cursor = self.cnx.cursor()
+            query = "SELECT * FROM complaints"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
 
     def update_approve_clearance_report(self, r_id, o_id, details):
         """
