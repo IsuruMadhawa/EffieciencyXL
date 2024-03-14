@@ -13,7 +13,22 @@ router = APIRouter(
 )
 
 
+@router.post("/criminal-sightings")
+async def criminal_sightings(
+        name: str = Form(...),
+        token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
 
+    if user is None:
+        raise credentials_exception
+
+    officer = get_officer_id(user.id)
+
+    if officer is None:
+        return {"message": "Only officers can report criminal sightings"}
+
+    return {"message": "Criminal sighting reported"}
 
 
 @router.post("/criminals")
