@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Form
 
 import mailer
 from auth.authorize import get_current_user, credentials_exception, oauth2_scheme
-from services.civilian_service import clearance_request, add_lost_item_report
+from services.civilian_service import clearance_request, add_lost_item_report, add_complaint
 from services.officer_service import get_officer_for_division
 
 router = APIRouter(
@@ -13,7 +13,7 @@ router = APIRouter(
 
 
 @router.post("/complaint")
-async def complaint(
+async def new_complaint(
         name: str = Form(...),
         division: str = Form(...),
         district: str = Form(...),
@@ -41,14 +41,15 @@ async def complaint(
         return {"message": "Only civilians can report complaints"}
 
     # Add the complaint to the database
-
+    add_complaint(name, division, district, complaint)
 
     # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
-    mailer.send_mail(
-        divisional_officer.email,
-        "A civilian has reported a complaint"
-    )
+    if divisional_officer:
+        mailer.send_mail(
+            divisional_officer.email,
+            "A civilian has reported a complaint"
+        )
 
     return {"message": "Complaint is sent"}
 
@@ -88,10 +89,11 @@ async def lost_item_report(
 
     # Send a notification to the divisional officer
     divisional_officer = get_officer_for_division(division)
-    mailer.send_mail(
-        divisional_officer.email,
-        "A civilian has reported a lost item"
-    )
+    if divisional_officer:
+        mailer.send_mail(
+            divisional_officer.email,
+            "A civilian has reported a lost item"
+        )
 
     return {"message": "Lost item report is sent"}
 
