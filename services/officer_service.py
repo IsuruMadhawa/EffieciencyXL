@@ -1,6 +1,15 @@
 from services.database_service import dao
 
 
+def get_alerts():
+    try:
+        data = dao.query_alerts()[0]
+        dao.set_alert_off(data[1])
+        return data
+    except Exception:
+        return {"message": "no recent criminal sightings"}
+
+
 def get_all_clearance_requests():
     return dao.query_all_clearance_requests()
 

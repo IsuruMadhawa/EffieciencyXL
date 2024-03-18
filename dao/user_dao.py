@@ -448,3 +448,27 @@ class UserDAO:
         except mysql.connector.Error as err:
             print(err)
             return err
+
+    def query_alerts(self):
+        try:
+            cursor = self.cnx.cursor()
+            query = "select id, label, location, timestamp , misc from feeddata where alerts=0 ORDER by timestamp"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err
+
+    def set_alert_off(self, label):
+        try:
+            cursor = self.cnx.cursor()
+            query = "update feeddata set alerts=1 where label=%s"
+            cursor.execute(query, (label, ))
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+        except mysql.connector.Error as err:
+            print(err)
+            return err

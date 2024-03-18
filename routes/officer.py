@@ -4,13 +4,30 @@ from auth.authorize import get_current_user, credentials_exception, oauth2_schem
 from mailer import send_mail
 from services.officer_service import get_all_clearance_requests, get_all_lost_item_reports, \
     get_single_clearance_request, update_clearance_report, get_officer_id, all_complaints, get_all_criminals, \
-    add_new_criminal, get_criminal_sightings
+    add_new_criminal, get_criminal_sightings, get_alerts
 
 router = APIRouter(
     prefix="/api/officer",
     tags=["officer"],
     responses={404: {"description": "The requested uri was not found"}},
 )
+
+
+@router.post("/get-alerts")
+async def alerts(
+        token: str = Depends(oauth2_scheme)
+):
+    user = await get_current_user(token)
+
+    if user is None:
+        raise credentials_exception
+
+    officer = get_officer_id(user.id)
+
+    if officer is None:
+        return {"message": "Only officers can request criminal sighting alerts"}
+
+    return get_alerts()
 
 
 @router.post("/criminal-sightings")
